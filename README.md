@@ -19,9 +19,9 @@ Unpublished technical report formatted in IEEE conference template.
 - LaTeX source: [`paper/ieee_source/`](paper/ieee_source/)
 
 ## Repository Structure
-- `src/`: Core Python implementation (filtering, PyTorch autoencoder, fault injection)
-- `experiments/`: Scripts for main experiment and ablation studies
-- `paper/`: IEEE-formatted manuscript, figures and LaTeX source
+- `main_experiment.ipynb`: Full reproducible experiment code. Contains data loading, Butterworth low-pass filtering, PyTorch autoencoder model, fault injection, ablation studies and all visualization plots.
+- `paper/manuscript.pdf`: Unpublished IEEE-style technical report
+- `requirements.txt`: Python environment dependencies
 
 ## Environment & Dependencies
 Python >=3.9
