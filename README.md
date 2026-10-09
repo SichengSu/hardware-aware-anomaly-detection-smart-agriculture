@@ -1,17 +1,15 @@
-# Hardware-Aware Hybrid Anomaly Detection in Smart Agriculture
-Combining Butterworth Signal Filtering with PyTorch Autoencoders for IoT edge sensor anomaly detection.
+# Is Low-Pass Pre-Filtering a Free Lunch?
+Trade-offs and Noise-Aware Conformal Calibration in Reconstruction-Based Sensor Anomaly Detection
 > Author: Sicheng Su | Electronic Engineering, King's College London
 
 ## Project Overview
-Field-deployed agricultural IoT sensors suffer high false alarm rates from circuit thermal noise and contact instability. This work proposes a hybrid pipeline: classical 4th/8th-order Butterworth low-pass filtering for signal preprocessing, followed by an unsupervised bottleneck Autoencoder for time-series anomaly detection.
-
-Controlled fault-injection experiments are built on the Numenta Anomaly Benchmark (NAB) sensor dataset. We quantify the tradeoff between filter parameters, false alarm rate and computational cost via systematic ablation studies.
+Applying a low-pass filter (e.g., Butterworth IIR or moving average) in front of edge anomaly detectors is a standard engineering heuristic to suppress transient hardware and circuit noise. However, low-pass filtering cannot distinguish noise from signal by origin—it attenuates by frequency. Short transient events (often critical anomalies) are high-frequency signals that get smeared, delayed, or removed entirely.
 
 Key Results (consistent with manuscript):
-- Baseline (raw signal, no filter): FAR = 100.00%, event detection rate = 100%
-- 4th-order Butterworth (0.05 Hz cutoff): FAR reduced to 61.55%
-- 8th-order Butterworth (0.05 Hz cutoff): FAR reduced to 48.47%
-- All tested configurations retain 100% detection sensitivity for wildlife intrusion transients
+- Raw Signal (No Filter + AE): FAR = 97.90%, Recall = 100.00%, AUPRC = 1.000, Latency = 0.0 samples
+- Moving Average Filter (L = 9): FAR = 46.50%, Recall = 96.70%, AUPRC = 0.915, Latency = 4.0 samples
+- 4th-order Causal Butterworth: FAR = 12.00%, Recall = 83.30%, AUPRC = 0.729, Latency = 6.3 samples
+- Noise-Aware Conformal Calibration (NACC): FAR = 5.70%, Recall = 100.00%, AUPRC = 0.993, Latency = 0.0 samples
 
 ## Manuscript
 Unpublished technical report formatted in IEEE conference template.
